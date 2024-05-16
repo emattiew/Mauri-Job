@@ -8,42 +8,42 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-5">
                 <div class="card shadow border-0 p-5">
-                    <h1 class="h3">Register</h1>
+                    <h1 class="h3">Inscription</h1>
                     <form action="{{ route('account.processRegistration') }}" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="name" class="mb-2">Name*</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Enter Name" value="{{ old('name') }}">
+                            <label for="name" class="mb-2">Nom*</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Entrez votre nom" value="{{ old('name') }}">
                             @error('name')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div> 
                         <div class="mb-3">
                             <label for="email" class="mb-2">Email*</label>
-                            <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter Email" value="{{ old('email') }}">
+                            <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Entrez votre email" value="{{ old('email') }}">
                             @error('email')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div> 
                         <div class="mb-3">
-                            <label for="password" class="mb-2">Password*</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
+                            <label for="password" class="mb-2">Mot de passe*</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Entrez votre mot de passe">
                             @error('password')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div> 
                         <div class="mb-3">
-                            <label for="confirm_password" class="mb-2">Confirm Password*</label>
-                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password">
+                            <label for="confirm_password" class="mb-2">Confirmez le mot de passe*</label>
+                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirmez votre mot de passe">
                             @error('confirm_password')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div> 
-                        <button class="btn btn-primary mt-2">Register</button>
+                        <button class="btn btn-primary mt-2">S'inscrire</button>
                     </form>                    
                 </div>
                 <div class="mt-4 text-center">
-                    <p>Have an account? <a href="{{ route('account.login') }}">Login</a></p>
+                    <p>Vous avez déjà un compte?<a href="{{ route('account.login') }}">Connectez-vous</a></p>
                 </div>
             </div>
         </div>

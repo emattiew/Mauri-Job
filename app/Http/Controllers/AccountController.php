@@ -96,6 +96,28 @@ class AccountController extends Controller
             ->withInput($request->only('email'));
         }
     }
+
+    public function updateProfilePic(Request $request){
+        $id=Auth::user()->id;
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|image',
+            
+        ]);
+        if ($validator->passes()){
+            $image = $request->image;
+            $ext = $image->getClientOriginalExtension();
+            $imageName = $id.'-'.time().'.'.$ext;
+            $image->move(public_path('/profile_pic/'),$imageName);
+
+            User::where('id',$id)->update(['image'=>$imageName]);
+
+            session()->flash('success','profile picture update successfully.');
+            return redirect()->route('account.profile');
+        }else{
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    }
+    
     public function logout(){
         Auth::logout();
         return redirect()->route('account.login');

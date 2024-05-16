@@ -6,9 +6,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-xl-8">
-                <h1>Find your dream job</h1>
-                <p>Thounsands of jobs available.</p>
-                <div class="banner-btn mt-5"><a href="#" class="btn btn-primary mb-4 mb-sm-0">Explore Now</a></div>
+                <h1>Trouvez votre emploi de rêve</h1>
+                <p>Des milliers d'emplois disponibles</p>
+                <div class="banner-btn mt-5"><a href="#" class="btn btn-primary mb-4 mb-sm-0">Explorer</a></div>
             </div>
         </div>
     </div>
@@ -26,17 +26,17 @@
                 </div>
                 <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
                     <select name="category" id="category" class="form-control">
-                        <option value="">Select a Category</option>
-                        <option value="">Engineering</option>
-                        <option value="">Accountant</option>
-                        <option value="">Information Technology</option>
-                        <option value="">Fashion designing</option>
+                    <option value="">Sélectionner une catégorie</option>
+                        <option value="">Ingénierie</option>
+                        <option value="">Comptabilité</option>
+                        <option value="">Technologie de l'information</option>
+                        <option value="">Design de mode</option>
                     </select>
                 </div>
                 
                 <div class=" col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
                     <div class="d-grid gap-2">
-                        <a href="jobs.html" class="btn btn-primary btn-block">Search</a>
+                        <a href="jobs.html" class="btn btn-primary btn-block">Rechercher</a>
                     </div>
                     
                 </div>

@@ -6,10 +6,10 @@
     <div class="container py-5">
         <div class="row">
             <div class="col">
-                <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
+                <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Account Settings</li>
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Paramètres du compte</li>
                     </ol>
                 </nav>
             </div>
@@ -24,55 +24,55 @@
                     <form action="{{ route('account.updateProfile') }}" method="post" id="userForm" name="userForm">
                     @csrf
                     @method('PUT')
-                    <div class="card-body  p-4">
-                        <h3 class="fs-4 mb-1">My Profile</h3>
+                    <div class="card-body p-4">
+                        <h3 class="fs-4 mb-1">Mon Profil</h3>
                         <div class="mb-4">
-                            <label for="" class="mb-2">Name*</label>
-                            <input type="text" name="name" id="name" placeholder="Enter Name" class="form-control" value="{{$user->name}}">
+                            <label for="name" class="mb-2">Nom*</label>
+                            <input type="text" name="name" id="name" placeholder="Entrez votre nom" class="form-control" value="{{$user->name}}">
                             @error('name')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <label for="" class="mb-2">Email*</label>
-                            <input type="text"  name="email" id="email" placeholder="Enter Email" class="form-control" value="{{$user->email}}">
+                            <label for="email" class="mb-2">Email*</label>
+                            <input type="text"  name="email" id="email" placeholder="Entrez votre email" class="form-control" value="{{$user->email}}">
                             @error('email')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <label for="" class="mb-2">Designation*</label>
-                            <input type="text" name="designation" id="designation"  placeholder="Designation" class="form-control"value="{{$user->designation}}">>
+                            <label for="designation" class="mb-2">Fonction*</label>
+                            <input type="text" name="designation" id="designation" placeholder="Fonction" class="form-control" value="{{$user->designation}}">
                         </div>
                         <div class="mb-4">
-                            <label for="" class="mb-2">Mobile*</label>
-                            <input type="text" name="mobile" id="mobile" placeholder="Mobile" class="form-control"value="{{$user->mobile}}">>
+                            <label for="mobile" class="mb-2">Mobile*</label>
+                            <input type="text" name="mobile" id="mobile" placeholder="Mobile" class="form-control" value="{{$user->mobile}}">
                         </div>                        
                     </div>
-                    <div class="card-footer  p-4">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                    <div class="card-footer p-4">
+                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
                     </div>
                     </form>
                 </div>
 
                 <div class="card border-0 shadow mb-4">
                     <div class="card-body p-4">
-                        <h3 class="fs-4 mb-1">Change Password</h3>
+                        <h3 class="fs-4 mb-1">Changer le mot de passe</h3>
                         <div class="mb-4">
-                            <label for="" class="mb-2">Old Password*</label>
-                            <input type="password" placeholder="Old Password" class="form-control">
+                            <label for="old_password" class="mb-2">Ancien mot de passe*</label>
+                            <input type="password" placeholder="Ancien mot de passe" class="form-control" id="old_password">
                         </div>
                         <div class="mb-4">
-                            <label for="" class="mb-2">New Password*</label>
-                            <input type="password" placeholder="New Password" class="form-control">
+                            <label for="new_password" class="mb-2">Nouveau mot de passe*</label>
+                            <input type="password" placeholder="Nouveau mot de passe" class="form-control" id="new_password">
                         </div>
                         <div class="mb-4">
-                            <label for="" class="mb-2">Confirm Password*</label>
-                            <input type="password" placeholder="Confirm Password" class="form-control">
+                            <label for="confirm_password" class="mb-2">Confirmez le mot de passe*</label>
+                            <input type="password" placeholder="Confirmez le mot de passe" class="form-control" id="confirm_password">
                         </div>                        
                     </div>
-                    <div class="card-footer  p-4">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                    <div class="card-footer p-4">
+                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
                     </div>
                 </div>                
             </div>
