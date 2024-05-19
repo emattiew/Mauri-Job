@@ -19,7 +19,7 @@
                 <a href="parametres-compte.html">Paramètres du compte</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="poster-emploi.html">Publier un emploi</a>
+                <a href="{{route('account.createJob')}}">Publier un emploi</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="mes-emplois.html">Mes emplois</a>
