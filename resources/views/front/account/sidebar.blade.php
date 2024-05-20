@@ -22,7 +22,7 @@
                 <a href="{{route('account.createJob')}}">Publier un emploi</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="mes-emplois.html">Mes emplois</a>
+                <a href="{{route('account.myJobs')}}">Mes emplois</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="emplois-postules.html">Emplois postulés</a>

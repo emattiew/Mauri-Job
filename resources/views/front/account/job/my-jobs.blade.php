@@ -43,15 +43,21 @@
                         </tr>
                     </thead>
                     <tbody class="border-0">
+                        @if($jobs->isNotEmpty())
+                        @foreach ($jobs as $job)
                         <tr class="active">
                             <td>
-                                <div class="job-name fw-500">Développeur Web</div>
-                                <div class="info1">Temps plein - Noida</div>
+                                <div class="job-name fw-500">{{ $job->title }}</div>
+                                <div class="info1">{{ $job->jobType->name }} . {{ $job->location }}</div>
                             </td>
-                            <td>05 juin 2023</td>
+                            <td>{{ \Carbon\Carbon::parse($job->created_at)->format('d M, Y') }}</td>
                             <td>130 candidatures</td>
                             <td>
-                                <div class="job-status text-capitalize">actif</div>
+                            @if ($job->status == 1)
+                                <div class="job-status text-capitalize">Active</div>
+                            @else
+                                 <div class="job-status text-capitalize">Block</div>
+                            @endif
                             </td>
                             <td>
                                 <div class="action-dots float-end">
@@ -66,75 +72,10 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr class="pending">
-                            <td>
-                                <div class="job-name fw-500">Développeur HTML</div>
-                                <div class="info1">Temps partiel - Delhi</div>
-                            </td>
-                            <td>13 août 2023</td>
-                            <td>20 candidatures</td>
-                            <td>
-                                <div class="job-status text-capitalize">en attente</div>
-                            </td>
-                            <td>
-                                <div class="action-dots float-end">
-                                    <a href="#" class="" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="job-detail.html"> <i class="fa fa-eye" aria-hidden="true"></i> Voir</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit" aria-hidden="true"></i> Modifier</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="expired">
-                            <td>
-                                <div class="job-name fw-500">Développeur Full Stack</div>
-                                <div class="info1">Temps plein - Noida</div>
-                            </td>
-                            <td>27 septembre 2023</td>
-                            <td>278 candidatures</td>
-                            <td>
-                                <div class="job-status text-capitalize">expiré</div>
-                            </td>
-                            <td>
-                                <div class="action-dots float-end">
-                                    <a href="#" class="" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="job-detail.html"> <i class="fa fa-eye" aria-hidden="true"></i> Voir</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit" aria-hidden="true"></i> Modifier</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>
-                                <div class="job-name fw-500">Développeur pour entreprise informatique</div>
-                                <div class="info1">Temps plein - Goa</div>
-                            </td>
-                            <td>14 février 2023</td>
-                            <td>70 candidatures</td>
-                            <td>
-                                <div class="job-status text-capitalize">actif</div>
-                            </td>
-                            <td>
-                                <div class="action-dots float-end">
-                                    <a href="#" class="" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="job-detail.html"> <i class="fa fa-eye" aria-hidden="true"></i> Voir</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit" aria-hidden="true"></i> Modifier</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                        @endforeach
+                        @endif
+                        
+                     
                     </tbody>
                 </table>
             </div>
