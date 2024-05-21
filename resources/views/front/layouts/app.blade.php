@@ -36,8 +36,11 @@
                 <a class="btn btn-outline-primary me-2" href="{{ route('account.profile') }}" type="submit">Compte</a>
                 @endif
 
-
-				<a class="btn btn-primary" href="{{route('account.createJob')}}" type="submit">Publier un emploi</a>
+                @if (!Auth::check())
+				<a class="btn btn-primary" href="{{ route('account.login') }}" type="submit">Publier un emploi</a>
+                @else
+                <a class="btn btn-primary" href="{{ route('account.profile') }}" type="submit">Publier un emploi</a>
+                @endif
 			</div>
 		</div>
 	</nav>

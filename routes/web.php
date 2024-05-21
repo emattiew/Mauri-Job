@@ -18,3 +18,5 @@ Route::post('/account/update-profile-pic',[AccountController::class,'updateProfi
 Route::get('/account/create-job',[AccountController::class,'createJob'])->name('account.createJob');
 Route::post('/account/save-job',[AccountController::class,'saveJob'])->name('account.saveJob');
 Route::get('/account/my-jobs', [AccountController::class, 'myJobs'])->name('account.myJobs');
+Route::get('/account/my-jobs/edit/{jobId}', [AccountController::class, 'editJob'])->name('account.editJob');
+Route::post('/account/update-job/{jobId}',[AccountController::class,'updateJob'])->name('account.updateJob');
