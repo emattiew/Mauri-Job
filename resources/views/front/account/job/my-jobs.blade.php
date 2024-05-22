@@ -67,7 +67,7 @@
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a class="dropdown-item" href="job-detail.html"> <i class="fa fa-eye" aria-hidden="true"></i> Voir</a></li>
                                         <li><a class="dropdown-item" href="{{route('account.editJob', ['jobId' => $job->id])}}"><i class="fa fa-edit" aria-hidden="true"></i> Modifier</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a></li>
+                                        <li><a class="dropdown-item" href="" onclick="deleteJob({{$job->id}})"><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -88,5 +88,34 @@
 </section>
 @endsection
 @section('customJs')
+<script type="text/javascript">
+    function deleteJob(jobId){
+        if(confirm("Êtes-vous sûr de vouloir supprimer ?")){
+            $.ajax({
+            url:'{{route ("account.deleteJob")}}',
+            type:'post',
+            data:{jobId: jobId,
+                _token: '{{ csrf_token() }}'
+            },
+            dataType:'json',
+            success: function(response) { 
+                if(response.status === true) {
+                        // Display success message
+                        alert('Offre d\'emploi supprimée avec succès.');
+                        
+                        // Remove the deleted job row from the table
+                        $('#job_' + jobId).remove();
+                        window.location.href='{{route ("account.myJobs")}}'
+                    } else {
+                        // Display error message if necessary
+                        alert('Une erreur s\'est produite lors de la suppression de l\'offre d\'emploi.');
+                    }
+               
+            }
+        });
 
+   
+        }
+    }
+</script>
 @endsection

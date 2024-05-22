@@ -17,14 +17,14 @@
 <header>
 	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3">
 		<div class="container">
-			<a class="navbar-brand" href="front.home">MauriJob</a>
+			<a class="navbar-brand" href="{{ route('home') }}">MauriJob</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ms-0 ms-sm-0 me-auto mb-2 mb-lg-0 ms-lg-4">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="index.html">Accueil</a>
+						<a class="nav-link" aria-current="page" href="{{ route('home') }}">Accueil</a>
 					</li>	
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="jobs.html">Trouver des emplois</a>
@@ -39,7 +39,7 @@
                 @if (!Auth::check())
 				<a class="btn btn-primary" href="{{ route('account.login') }}" type="submit">Publier un emploi</a>
                 @else
-                <a class="btn btn-primary" href="{{ route('account.profile') }}" type="submit">Publier un emploi</a>
+                <a class="btn btn-primary" href="{{route('account.createJob')}}" type="submit">Publier un emploi</a>
                 @endif
 			</div>
 		</div>

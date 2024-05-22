@@ -238,6 +238,23 @@ class AccountController extends Controller
     
 
     }
+    public function deleteJob(Request $request){
+        $job = Job::where('user_id', Auth::user()->id)
+        ->where('id', $request -> jobId)
+        ->first();
+        if($job == null){
+            session()->flash('error','emploi non trouve');
+           return response()->json([
+            'status'=> true
+           ]);
+        }
+            Job::where('id',$request -> jobId)->delete();
+            session()->flash('success','Offre d\'emploi supprime avec succès.');
+            dd(session('success'));
+            return redirect()->route('account.myJobs'); 
+            
+        
+    }
 
     public function logout(){
         Auth::logout();
