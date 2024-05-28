@@ -13,31 +13,37 @@
     </div>
 </section>
 
-<section class="section-1 py-5"> 
+<section class="section-1 py-5 "> 
     <div class="container">
         <div class="card border-0 shadow p-5">
-            <div class="row">
-                <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                    <input type="text" class="form-control" name="search" id="search" placeholder="Mots-clés">
-                </div>
-                <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                    <input type="text" class="form-control" name="search" id="search" placeholder="Lieu">
-                </div>
-                <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                    <select name="category" id="category" class="form-control">
-                        <option value="">Sélectionner une catégorie</option>
-                        <option value="">Ingénierie</option>
-                        <option value="">Comptabilité</option>
-                        <option value="">Technologie de l'information</option>
-                        <option value="">Design de mode</option>
-                    </select>
-                </div>
-                <div class="col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
-                    <div class="d-grid gap-2">
-                        <a href="jobs.html" class="btn btn-primary btn-block">Rechercher</a>
+            <form action="{{ route("jobs") }}" method="GET">
+                <div class="row">
+                    <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
+                        <input type="text" class="form-control" name="keyword" id="keyword" placeholder="Keywords">
                     </div>
-                </div>
-            </div>            
+                    <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
+                        <input type="text" class="form-control" name="location" id="location" placeholder="Location">
+                    </div>
+                    <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
+                        <select name="category" id="category" class="form-control">
+                            <option value="">Select a Category</option>
+                            @if ($newCategories->isNotEmpty())
+                                @foreach ($newCategories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>  
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                    
+                    <div class=" col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
+                        <div class="d-grid gap-2">
+                            {{-- <a href="jobs.html" class="btn btn-primary btn-block">Search</a> --}}
+                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                        </div>
+                        
+                    </div>
+                </div> 
+            </form>           
         </div>
     </div>
 </section>
@@ -96,7 +102,7 @@
                                         </div>
     
                                         <div class="d-grid mt-3">
-                                            <a href="" class="btn btn-primary btn-lg">Details</a>
+                                            <a href="{{ route('jobDetail',$latestJob->id) }}" class="btn btn-primary btn-lg">Details</a>
                                         </div>
                                     </div>
                                 </div>

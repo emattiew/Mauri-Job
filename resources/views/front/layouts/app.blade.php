@@ -27,7 +27,7 @@
 						<a class="nav-link" aria-current="page" href="{{ route('home') }}">Accueil</a>
 					</li>	
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="jobs.html">Trouver des emplois</a>
+						<a class="nav-link" aria-current="page" href="{{ route('jobs') }}">Trouver des emplois</a>
 					</li>										
 				</ul>	
                 @if (!Auth::check())			
