@@ -25,10 +25,10 @@
                 <a href="{{route('account.myJobs')}}">Mes emplois</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="emplois-postules.html">Emplois postulés</a>
+                <a href="{{route('account.myJobApplications')}}">Emplois postulés</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="emplois-enregistres.html">Emplois enregistrés</a>
+                <a href="{{ route('account.savedJobs') }}">Emplois enregistrés</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('account.logout') }}">Déconnexion</a>

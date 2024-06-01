@@ -16,7 +16,7 @@
 <section class="section-1 py-5 "> 
     <div class="container">
         <div class="card border-0 shadow p-5">
-            <form action="{{ route("jobs") }}" method="GET">
+            <form action="{{ route('jobs') }}" method="GET">
                 <div class="row">
                     <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
                         <input type="text" class="form-control" name="keyword" id="keyword" placeholder="Keywords">
@@ -37,7 +37,7 @@
                     
                     <div class=" col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
                         <div class="d-grid gap-2">
-                            {{-- <a href="jobs.html" class="btn btn-primary btn-block">Search</a> --}}
+                           {{-- <a href="jobs.html" class="btn btn-primary btn-block">Search</a> --}}
                             <button type="submit" class="btn btn-primary btn-block">Search</button>
                         </div>
                         
@@ -56,7 +56,7 @@
             @foreach ($categories as $category)
             <div class="col-lg-4 col-xl-3 col-md-6">
                 <div class="single_catagory">
-                    <a href=""><h4 class="pb-2">{{ $category->name }}</h4></a>
+                    <a href="{{ route('jobs').'?category='.$category->id }}"><h4 class="pb-2">{{ $category->name }}</h4></a>
                     <p class="mb-0"> <span>50</span> Available position</p>
                 </div>
             </div> 
