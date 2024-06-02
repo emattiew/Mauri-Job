@@ -16,7 +16,7 @@
     <div class="card-body p-0">
         <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between p-3">
-                <a href="parametres-compte.html">Paramètres du compte</a>
+                <a href="{{ route('account.profile') }}">Paramètres du compte</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{route('account.createJob')}}">Publier un emploi</a>

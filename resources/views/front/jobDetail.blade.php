@@ -73,7 +73,7 @@
                         @if (Auth::check())
                                 <a href="#" onclick="saveJob({{ $job->id }});" class="btn btn-secondary">Save</a>  
                             @else
-                                <a href="javascript:void(0);" class="btn btn-secondary disabled">Login to Save</a>
+                                <a href="javascript:void(0);" class="btn btn-secondary disabled">Connectez-vous pour enregistrer</a>
                             @endif
 
                             

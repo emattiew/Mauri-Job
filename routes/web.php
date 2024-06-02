@@ -20,6 +20,7 @@ Route::get('/account/login',[AccountController::class,'login'])->name('account.l
 Route::post('/account/authenticate',[AccountController::class,'authenticate'])->name('account.authenticate');
 Route::get('/account/profile',[AccountController::class,'profile'])->name('account.profile');
 Route::put('/account/updateprofile',[AccountController::class,'updateProfile'])->name('account.updateProfile');
+Route::post('/update-password',[AccountController::class,'updatePassword'])->name('account.updatePassword'); 
 Route::get('/account/logout',[AccountController::class,'logout'])->name('account.logout');
 Route::post('/account/update-profile-pic',[AccountController::class,'updateProfilePic'])->name('account.updateProfilePic');
 Route::get('/account/create-job',[AccountController::class,'createJob'])->name('account.createJob');

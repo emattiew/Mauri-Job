@@ -107,7 +107,7 @@ class JobsController extends Controller
     
             // If job not found in db
             if ($job == null) {
-                $message = 'Job does not exist.';
+                $message = 'L\'emploi n\'existe pas.';
                 session()->flash('error',$message);
                 return response()->json([
                     'status' => false,
@@ -171,7 +171,7 @@ class JobsController extends Controller
             $job = Job::find($id);
     
             if ($job == null) {
-                session()->flash('error','Job not found');
+                session()->flash('error','Emploi non trouvé');
     
                 return response()->json([
                     'status' => false,
@@ -185,7 +185,7 @@ class JobsController extends Controller
             ])->count();
     
             if ($count > 0) {
-                session()->flash('error','You already saved this job.');
+                session()->flash('error','Vous avez déjà enregistré cet emploi.');
     
                 return response()->json([
                     'status' => false,
@@ -197,7 +197,7 @@ class JobsController extends Controller
             $savedJob->user_id = Auth::user()->id;
             $savedJob->save();
     
-            session()->flash('success','You have successfully saved the job.');
+            session()->flash('success','Vous avez enregistré cet emploi avec succès.');
     
             return response()->json([
                 'status' => true,
