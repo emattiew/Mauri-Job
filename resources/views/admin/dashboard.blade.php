@@ -5,10 +5,10 @@
     <div class="container py-5">
         <div class="row">
             <div class="col">
-                <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
+                <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Tableau de Bord</li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +21,7 @@
                 @include('front.message')
                 <div class="card border-0 shadow mb-4">
                    <div class="card-body dashboard text-center">
-                        <p class="h2">Welcome Administrator!!</p>
+                        <p class="h2">Bienvenue Administrateur !!</p>
                    </div>
                 </div>                          
             </div>

@@ -2,6 +2,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 
 
     Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
+    Route::get('/users',[UserController::class,'index'])->name('admin.users');
+    Route::get('/users/{id}',[UserController::class,'edit'])->name('admin.users.edit');
+    Route::put('/users/{id}',[UserController::class,'update'])->name('admin.users.update');
+    Route::delete('/users',[UserController::class,'destroy'])->name('admin.users.destroy');
    
 
 Route::get('/',[HomeController::class,'index'])->name('home');
