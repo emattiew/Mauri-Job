@@ -40,8 +40,10 @@ class AccountController extends Controller
             $user->password = Hash::make($request->password); // Utilisation correcte de Hash::make
             $user->save(); // Sauvegarde de l'utilisateur
 
-            session()->flash('success', 'You have registered successfully');
-            return redirect()->route('account.login')->with('success', 'Registration successful');
+            session()->flash('success', 'Vous vous êtes inscrit avec succès.');
+
+            return redirect()->route('account.login')->with('success', 'Inscription réussie');
+
         } else {
             return redirect()->route('account.registration')->withErrors($validator)->withInput();
 
@@ -98,7 +100,7 @@ class AccountController extends Controller
             $user->mobile=$request->mobile;
             $user->designation=$request->designation;
             $user->save();
-            session()->flash('success','profile update successfully.');
+            session()->flash('success','Profil mis à jour avec succès.');
             return redirect()->route('account.profile');
         }else{
             return redirect()->route('account.profile')
@@ -253,14 +255,15 @@ class AccountController extends Controller
 
 
         if ($job == null) {
-            session()->flash('error','Either job deleted or not found.');
+            session()->flash('error','L\'emploi a été soit supprimé soit non trouvé.');
             return response()->json([
                 'status' => true
             ]);
         }
 
         Job::where('id',$request->jobId)->delete();
-        session()->flash('success','Job deleted successfully.');
+        session()->flash('success','L\'emploi a été supprimé avec succès.');
+
         return response()->json([
             'status' => true
         ]);
@@ -287,14 +290,15 @@ return view('front.account.job.my-job-applications',[
                                 )->first();
         
         if ($jobApplication == null) {
-            session()->flash('error','Job application not found');
+            session()->flash('error', 'Candidature à l\'emploi introuvable.');
             return response()->json([
                 'status' => false,                
             ]);
         }
 
         JobApplication::find($request->id)->delete();
-        session()->flash('success','Job application removed successfully.');
+        session()->flash('success', 'Candidature à l\'emploi supprimée avec succès.');
+
 
         return response()->json([
             'status' => true,                

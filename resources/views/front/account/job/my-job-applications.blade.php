@@ -1,3 +1,4 @@
+```blade
 @extends('front.layouts.app')
 
 @section('main')
@@ -7,8 +8,8 @@
             <div class="col">
                 <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Account Settings</li>
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Paramètres du compte</li>
                     </ol>
                 </nav>
             </div>
@@ -23,18 +24,17 @@
                     <div class="card-body card-form">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <h3 class="fs-4 mb-1">Jobs Applied</h3>
+                                <h3 class="fs-4 mb-1">Emplois appliqués</h3>
                             </div>                           
-                            
                         </div>
                         <div class="table-responsive">
                             <table class="table ">
                                 <thead class="bg-light">
                                     <tr>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Applied Date</th>
-                                        <th scope="col">Applicants</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Titre</th>
+                                        <th scope="col">Date d'application</th>
+                                        <th scope="col">Candidats</th>
+                                        <th scope="col">Statut</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -47,12 +47,12 @@
                                                 <div class="info1">{{ $jobApplication->job->jobType->name }} . {{ $jobApplication->job->location }}</div>
                                             </td>
                                             <td>{{ \Carbon\Carbon::parse($jobApplication->applied_date)->format('d M, Y') }}</td>
-                                            <td>{{ $jobApplication->job->applications->count() }} Applications</td>
+                                            <td>{{ $jobApplication->job->applications->count() }} Candidatures</td>
                                             <td>
                                                 @if ($jobApplication->job->status == 1)
-                                                <div class="job-status text-capitalize">Active</div>
+                                                <div class="job-status text-capitalize">Actif</div>
                                                 @else
-                                                <div class="job-status text-capitalize">Block</div>
+                                                <div class="job-status text-capitalize">Bloqué</div>
                                                 @endif                                    
                                             </td>
                                             <td>
@@ -61,8 +61,8 @@
                                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </button>
                                                     <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item" href="{{ route("jobDetail",$jobApplication->job_id) }}"> <i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
-                                                        <li><a class="dropdown-item" href="#" onclick="removeJob({{ $jobApplication->id }})" ><i class="fa fa-trash" aria-hidden="true"></i> Remove</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route("jobDetail",$jobApplication->job_id) }}"> <i class="fa fa-eye" aria-hidden="true"></i> Voir</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="removeJob({{ $jobApplication->id }})" ><i class="fa fa-trash" aria-hidden="true"></i> Supprimer</a></li>
                                                     </ul>
                                                 </div>
                                             </td>
@@ -70,11 +70,9 @@
                                         @endforeach
                                     @else
                                     <tr>
-                                        <td colspan="5">Job Applications not found</td>
+                                        <td colspan="5">Aucune candidature à l'emploi trouvée</td>
                                     </tr>
                                     @endif
-                                    
-                                    
                                 </tbody>                                
                             </table>
                         </div>
@@ -88,10 +86,11 @@
     </div>
 </section>
 @endsection
+
 @section('customJs')
 <script type="text/javascript">   
 function removeJob(id) {
-    if (confirm("Are you sure you want to remove?")) {
+    if (confirm("Êtes-vous sûr de vouloir supprimer?")) {
         $.ajax({
             url : '{{ route("account.removeJobs") }}',
             type: 'post',
@@ -107,3 +106,4 @@ function removeJob(id) {
 }
 </script>
 @endsection
+```

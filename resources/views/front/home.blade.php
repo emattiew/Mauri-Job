@@ -19,14 +19,14 @@
             <form action="{{ route('jobs') }}" method="GET">
                 <div class="row">
                     <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                        <input type="text" class="form-control" name="keyword" id="keyword" placeholder="Keywords">
+                        <input type="text" class="form-control" name="keyword" id="keyword" placeholder="Mots-clés">
                     </div>
                     <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                        <input type="text" class="form-control" name="location" id="location" placeholder="Location">
+                        <input type="text" class="form-control" name="location" id="location" placeholder="Lieu">
                     </div>
                     <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
                         <select name="category" id="category" class="form-control">
-                            <option value="">Select a Category</option>
+                            <option value="">Sélectionner une catégorie</option>
                             @if ($newCategories->isNotEmpty())
                                 @foreach ($newCategories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>  
@@ -38,7 +38,7 @@
                     <div class=" col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
                         <div class="d-grid gap-2">
                            {{-- <a href="jobs.html" class="btn btn-primary btn-block">Search</a> --}}
-                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                            <button type="submit" class="btn btn-primary btn-block">Rechercher</button>
                         </div>
                         
                     </div>
@@ -57,7 +57,7 @@
             <div class="col-lg-4 col-xl-3 col-md-6">
                 <div class="single_catagory">
                     <a href="{{ route('jobs').'?category='.$category->id }}"><h4 class="pb-2">{{ $category->name }}</h4></a>
-                    <p class="mb-0"> <span>50</span> Available position</p>
+                    <p class="mb-0"> <span>50</span> Postes disponibles</p>
                 </div>
             </div> 
             @endforeach                
@@ -102,7 +102,7 @@
                                         </div>
     
                                         <div class="d-grid mt-3">
-                                            <a href="{{ route('jobDetail',$latestJob->id) }}" class="btn btn-primary btn-lg">Details</a>
+                                            <a href="{{ route('jobDetail',$latestJob->id) }}" class="btn btn-primary btn-lg">Détails</a>
                                         </div>
                                     </div>
                                 </div>

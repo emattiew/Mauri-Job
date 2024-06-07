@@ -4,6 +4,8 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\JobApplicationController;
+use App\Http\Controllers\admin\JobController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -16,7 +18,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('/users/{id}',[UserController::class,'edit'])->name('admin.users.edit');
     Route::put('/users/{id}',[UserController::class,'update'])->name('admin.users.update');
     Route::delete('/users',[UserController::class,'destroy'])->name('admin.users.destroy');
-   
+    Route::get('admin/jobs', [JobController::class, 'index'])->name('admin.jobs');
+    Route::get('admin/jobs/edit/{id}',[JobController::class,'edit'])->name('admin.jobs.edit');
+    Route::put('admin/jobs/{id}',[JobController::class,'update'])->name('admin.jobs.update');
+    Route::delete('admin/jobs',[JobController::class,'destroy'])->name('admin.jobs.destroy');
+    Route::get('/job-applications',[JobApplicationController::class,'index'])->name('admin.jobApplications');
+    Route::delete('/job-applications',[JobApplicationController::class,'destroy'])->name('admin.jobApplications.destroy');
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/jobs', [JobsController::class, 'index'])->name('jobs');
