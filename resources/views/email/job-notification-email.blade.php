@@ -20,5 +20,10 @@
     <p>Nom : {{ $mailData['user']->name }}</p>
     <p>Email : {{ $mailData['user']->email }}</p>
     <p>Numéro de Mobile : {{ $mailData['user']->mobile }}</p>
+    <p>Désignation : {{ $mailData['user']->designation }}</p>
+    
+    @if(isset($mailData['user']->cv))
+        <p><a href="{{ asset('cv/' . $mailData['user']->cv) }}">Télécharger CV</a></p>
+    @endif
 </body>
 </html>

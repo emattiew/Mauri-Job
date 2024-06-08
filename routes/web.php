@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\JobApplicationController;
 use App\Http\Controllers\admin\JobController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -44,6 +45,7 @@ Route::get('/account/login',[AccountController::class,'login'])->name('account.l
 Route::post('/account/authenticate',[AccountController::class,'authenticate'])->name('account.authenticate');
 Route::get('/account/profile',[AccountController::class,'profile'])->name('account.profile');
 Route::put('/account/updateprofile',[AccountController::class,'updateProfile'])->name('account.updateProfile');
+Route::put('/account/update-cv',[AccountController::class,'updateCV'])->name('account.updateCV');
 Route::post('/update-password',[AccountController::class,'updatePassword'])->name('account.updatePassword'); 
 Route::get('/account/logout',[AccountController::class,'logout'])->name('account.logout');
 Route::post('/account/update-profile-pic',[AccountController::class,'updateProfilePic'])->name('account.updateProfilePic');

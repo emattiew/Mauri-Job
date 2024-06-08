@@ -41,7 +41,7 @@
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <label for="designation" class="mb-2">Fonction*</label>
+                            <label for="designation" class="mb-2">designation*</label>
                             <input type="text" name="designation" id="designation" placeholder="Fonction" class="form-control" value="{{$user->designation}}">
                         </div>
                         <div class="mb-4">
@@ -54,7 +54,25 @@
                     </div>
                     </form>
                 </div>
-
+            <div class="card border-0 shadow mb-4">
+                <form action="{{ route('account.updateCV') }}" method="post" id="updateCVForm" name="updateCVForm" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="card-body p-4">
+                        <h3 class="fs-4 mb-1">Mettre à jour le CV</h3>
+                        <div class="mb-4">
+                            <label for="cv" class="mb-2">Sélectionner un fichier*</label>
+                            <input type="file" name="cv" id="cv" class="form-control">
+                            @error('cv')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="card-footer p-4">
+                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                    </div>
+                </form>
+            </div>
                 <div class="card border-0 shadow mb-4">
                     <form action="" method="post" id="changePasswordForm" name="changePasswordForm">
                     @csrf

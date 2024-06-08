@@ -89,7 +89,7 @@ class AccountController extends Controller
         $id=Auth::user()->id;
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:5|max:20',
-            'email' => 'required|email|unique:users,email,'.$id.',id'
+            'email' => 'required|email|unique:users,email,'.$id.',id',
             
             
         ]);
@@ -99,6 +99,7 @@ class AccountController extends Controller
             $user->email=$request->email;
             $user->mobile=$request->mobile;
             $user->designation=$request->designation;
+            
             $user->save();
             session()->flash('success','Profil mis à jour avec succès.');
             return redirect()->route('account.profile');
@@ -106,6 +107,29 @@ class AccountController extends Controller
             return redirect()->route('account.profile')
             ->withErrors($validator)
             ->withInput($request->only('email'));
+        }
+    }
+    public function updateCV(Request $request){
+        $id = Auth::user()->id;
+        $validator = Validator::make($request->all(), [
+            'cv' => 'required|mimes:pdf,doc,docx|max:2048',
+        ]);
+    
+        if ($validator->passes()){
+            $cv = $request->file('cv');
+            $ext = $cv->getClientOriginalExtension();
+            $cvName = $id . '-' . time() . '.' . $ext;
+            $cv->move(public_path('/cvs/'), $cvName);
+    
+            // Update the user's CV in the database
+            User::where('id', $id)->update(['cv' => $cvName]);
+    
+            // Flash success message and redirect
+            session()->flash('success', 'CV mis à jour avec succès.');
+            return redirect()->route('account.profile');
+        } else {
+            // If validation fails, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
         }
     }
 

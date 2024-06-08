@@ -110,6 +110,7 @@
                                 <th>Nom</th>
                                 <th>Email</th>
                                 <th>Mobile</th>
+                                <th>CV</th>
                                 <th>Date de candidature</th>
                             </tr>
                             @if ($applications->isNotEmpty())
@@ -119,8 +120,16 @@
                                     <td>{{ $application->user->email }}</td>
                                     <td>{{ $application->user->mobile }}</td>
                                     <td>
+                                    @if($application->user->cv)
+                                        <a href="">Télécharger CV</a>
+                                    @else
+                                        N/A
+                                    @endif
+                    </td>
+                                    <td>
                                         {{ \Carbon\Carbon::parse($application->applied_date)->format('d M, Y') }}
                                     </td>
+
                                 </tr> 
                                 @endforeach
                                 @else
