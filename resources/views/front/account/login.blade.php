@@ -36,7 +36,7 @@
                         </div> 
                         <div class="justify-content-between d-flex">
                         <button class="btn btn-primary mt-2">Connexion</button>
-                            <a href="mot-de-passe-oublie.html" class="mt-3">Mot de passe oublié?</a>
+                            <a href="{{ route('account.forgotPassword') }}" class="mt-3">Mot de passe oublié?</a>
                         </div>
                     </form>                    
                 </div>

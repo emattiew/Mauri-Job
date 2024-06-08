@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Job Notification Email</title>
+    <title>Email de Notification de Poste</title>
 </head>
 <body>
-    <h1>Hello {{ $mailData['employer']->name }}</h1>
-    
-    <p>Job Title: {{ $mailData['job']->title  }}</p>
+    <h1>Bonjour {{ $mailData['employer']->name }}</h1>
 
-    <p>Employee Details:</p>
-    
-    <p>Name: {{ $mailData['user']->name }}</p>
-    <p>Email: {{ $mailData['user']->email }}</p>
-    <p>Mobile No: {{ $mailData['user']->mobile }}</p>
+    @if(isset($mailData['job']))
+        <p>Titre du Poste : {{ $mailData['job']->title }}</p>
+    @else
+        <p>Les informations sur le poste ne sont pas disponibles.</p>
+    @endif
 
+    <p>Détails de l'Employé :</p>
+    
+    <p>Nom : {{ $mailData['user']->name }}</p>
+    <p>Email : {{ $mailData['user']->email }}</p>
+    <p>Numéro de Mobile : {{ $mailData['user']->mobile }}</p>
 </body>
 </html>

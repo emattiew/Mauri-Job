@@ -24,6 +24,12 @@ use Illuminate\Support\Facades\Route;
     Route::delete('admin/jobs',[JobController::class,'destroy'])->name('admin.jobs.destroy');
     Route::get('/job-applications',[JobApplicationController::class,'index'])->name('admin.jobApplications');
     Route::delete('/job-applications',[JobApplicationController::class,'destroy'])->name('admin.jobApplications.destroy');
+    Route::get('/forgot-password',[AccountController::class,'forgotPassword'])->name('account.forgotPassword');
+    Route::post('/process-forgot-password',[AccountController::class,'processForgotPassword'])->name('account.processForgotPassword');
+    Route::get('/reset-password/{token}',[AccountController::class,'resetPassword'])->name('account.resetPassword');
+    Route::post('/process-reset-password',[AccountController::class,'processResetPassword'])->name('account.processResetPassword');
+
+
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/jobs', [JobsController::class, 'index'])->name('jobs');
