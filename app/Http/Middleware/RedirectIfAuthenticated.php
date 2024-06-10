@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
@@ -15,15 +14,14 @@ class RedirectIfAuthenticated
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string ...$guards): Response
+    public function handle(Request $request, Closure $next, ...$guards): Response
     {
-        $guards = empty($guards) ? [null] : $guards;
+        $guard = empty($guards) ? null : $guards[0];
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(route('account.profile'));
-            }
+        if (Auth::guard($guard)->check()) {
+            return redirect(route('account.profile'));
         }
+       
 
         return $next($request);
     }

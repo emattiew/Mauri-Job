@@ -31,16 +31,20 @@
 					</li>										
 				</ul>	
                 @if (!Auth::check())			
-				<a class="btn btn-outline-primary me-2" href="{{ route('account.login') }}" type="submit">Connexion</a>
+				<a class="btn btn-outline-primary me-2" href="{{ route('login') }}" type="submit">Connexion</a>
                 @else
                 @if (Auth::user()->role == 'admin')
 					<a class="btn btn-outline-primary me-2" href="{{ route('admin.dashboard') }}" type="submit">Admin</a>				
 					@endif	
+                @if (Auth::user()->role == 'expert')  
+                <a class="btn btn-outline-primary me-2" href="{{ route('expert.dashboard') }}" type="submit">Expert</a>
+                    @endif 
                 <a class="btn btn-outline-primary me-2" href="{{ route('account.profile') }}" type="submit">Compte</a>
+               
                 @endif
-
+                
                 @if (!Auth::check())
-				<a class="btn btn-primary" href="{{ route('account.login') }}" type="submit">Publier un emploi</a>
+				<a class="btn btn-primary" href="{{ route('login') }}" type="submit">Publier un emploi</a>
                 @else
                 <a class="btn btn-primary" href="{{route('account.createJob')}}" type="submit">Publier un emploi</a>
                 @endif

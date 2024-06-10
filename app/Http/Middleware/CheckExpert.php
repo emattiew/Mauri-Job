@@ -6,9 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
-
-
-class CheckAdmin
+class CheckExpert
 {
     /**
      * Handle an incoming request.
@@ -17,8 +15,7 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-      
-        if (Auth::user()->role =="admin"){
+        if (Auth::user()->role =="expert"){
             return $next($request);
         }
 

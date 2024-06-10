@@ -65,7 +65,7 @@ class AccountController extends Controller
             if(Auth::attempt(['email' => $request ->email,'password'=> $request->password])){
                 return redirect()->route('account.profile');
             }else{
-                return redirect()->route('account.login')->with('error','email ou password incorrecte');
+                return redirect()->route('login')->with('error','email ou password incorrecte');
             }
 
         }else{
@@ -401,7 +401,7 @@ return view('front.account.job.my-job-applications',[
     }
     public function logout(){
         Auth::logout();
-        return redirect()->route('account.login');
+        return redirect()->route('login');
         
     }
     public function forgotPassword() {
