@@ -121,7 +121,7 @@
                                     <td>{{ $application->user->mobile }}</td>
                                     <td>
                                     @if($application->user->cv)
-                                        <a href="">Télécharger CV</a>
+                                    <a href="{{ route('download.cv', $application->user->cv) }}">Télécharger CV</a>
                                     @else
                                         N/A
                                     @endif

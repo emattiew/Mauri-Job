@@ -61,7 +61,8 @@ Route::middleware(['auth',CheckAdmin::class])->group(function(){
 });
 Route::middleware(['auth',CheckExpert::class])->group(function(){
     Route::get('/dashboardd',[DashboarddController::class,'index'])->name('expert.dashboard');
-    Route::get('expert/job-applications',[JobApplicationController::class,'index'])->name('expert.jobApplications');
+    Route::get('/dashboard/detail/{id}', [DashboarddController::class, 'detail'])->name('expert.dashboard.detail');
+    Route::get('expert/job-applicationss',[JobApplicationController::class,'index'])->name('expert.jobApplicationss');
     
 });
     
@@ -85,3 +86,4 @@ Route::post('/remove-saved-job',[AccountController::class,'removeSavedJob'])->na
 
 
 Route::get('/account/logout',[AccountController::class,'logout'])->name('account.logout');
+Route::get('/download/cv/{filename}', [PDFController::class, 'download'])->name('download.cv');

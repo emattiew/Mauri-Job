@@ -23,7 +23,24 @@
     <p>Désignation : {{ $mailData['user']->designation }}</p>
     
     @if(isset($mailData['user']->cv))
-        <p><a href="{{ asset('cv/' . $mailData['user']->cv) }}">Télécharger CV</a></p>
+    <p><a href="{{ route('download.cv', $mailData['user']->cv) }}">Télécharger CV</a></p>
     @endif
 </body>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .content {
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+    </style>
 </html>
+
