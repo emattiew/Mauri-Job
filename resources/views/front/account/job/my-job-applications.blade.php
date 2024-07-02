@@ -1,4 +1,4 @@
-```blade
+
 @extends('front.layouts.app')
 
 @section('main')
@@ -24,7 +24,7 @@
                     <div class="card-body card-form">
                         <div class="d-flex justify-content-between">
                             <div>
-                                <h3 class="fs-4 mb-1">Emplois appliqués</h3>
+                                <h3 class="fs-4 mb-1">Emplois postulés</h3>
                             </div>                           
                         </div>
                         <div class="table-responsive">

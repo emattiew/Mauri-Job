@@ -43,7 +43,7 @@
                     </form>                    
                 </div>
                 <div class="mt-4 text-center">
-                    <p>Vous avez déjà un compte?<a href="{{ route('account.login') }}">Connectez-vous</a></p>
+                    <p>Vous avez déjà un compte?<a href="{{ route('login') }}">Connectez-vous</a></p>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@
                         .addClass('invalid-feedback')
                         .html('');
 
-                        window.location.href='{{route ("account.login")}}'
+                        window.location.href='{{route ("login")}}'
 
                 }
             }

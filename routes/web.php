@@ -21,16 +21,16 @@ Route::get('/account/register',[AccountController::class,'registration'])->name(
 Route::post('/account/process-register',[AccountController::class,'processRegistration'])->name('account.processRegistration');
 Route::get('/login',[AccountController::class,'login'])->name('login');
 Route::post('/account/authenticate',[AccountController::class,'authenticate'])->name('account.authenticate');
+Route::post('/process-forgot-password',[AccountController::class,'processForgotPassword'])->name('account.processForgotPassword');
+Route::get('/reset-password/{token}',[AccountController::class,'resetPassword'])->name('account.resetPassword');
+Route::post('/process-reset-password',[AccountController::class,'processResetPassword'])->name('account.processResetPassword');
+Route::get('/forgot-password',[AccountController::class,'forgotPassword'])->name('account.forgotPassword');
 Route::group(['middleware' => 'auth'], function(){ 
     Route::get('/account/profile',[AccountController::class,'profile'])->name('account.profile');
     Route::put('/account/updateprofile',[AccountController::class,'updateProfile'])->name('account.updateProfile');
     Route::put('/account/update-cv',[AccountController::class,'updateCV'])->name('account.updateCV');
     Route::post('/update-password',[AccountController::class,'updatePassword'])->name('account.updatePassword'); 
     Route::delete('admin/jobs',[JobController::class,'destroy'])->name('admin.jobs.destroy');
-    Route::get('/forgot-password',[AccountController::class,'forgotPassword'])->name('account.forgotPassword');
-    Route::post('/process-forgot-password',[AccountController::class,'processForgotPassword'])->name('account.processForgotPassword');
-    Route::get('/reset-password/{token}',[AccountController::class,'resetPassword'])->name('account.resetPassword');
-    Route::post('/process-reset-password',[AccountController::class,'processResetPassword'])->name('account.processResetPassword');
     Route::post('/account/update-profile-pic',[AccountController::class,'updateProfilePic'])->name('account.updateProfilePic');
     Route::get('/account/create-job',[AccountController::class,'createJob'])->name('account.createJob');
     Route::post('/account/save-job',[AccountController::class,'saveJob'])->name('account.saveJob');

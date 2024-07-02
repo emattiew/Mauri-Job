@@ -13,14 +13,14 @@ class DashboarddController extends Controller
     public function index()
     {
          // Fetch applications
-    $applications = JobApplication::all(); // Adjust this query based on your application logic
-
+         $applications = JobApplication::with('user')->get()->unique('user_id');
     // Return the view with the necessary data
     return view('expert.dashboard', ['applications' => $applications]);
     }
 
     public function detail($id)
     {
+        
         // Fetch job details
         $job = Job::where([
             'id' => $id,
@@ -42,7 +42,7 @@ class DashboarddController extends Controller
         }
 
         // Fetch job applications for this job
-        $applications = JobApplication::where('job_id', $id)->with('user')->get();
+        $applications = JobApplication::where('job_id', $id)->with('user')->get()->unique('user_id');
 
         // Return the view with necessary data
         return view('expert.dashboard', [

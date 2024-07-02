@@ -42,6 +42,7 @@
             <div class="descript_wrap white-bg">
                 <table class="table table-striped">
                     <tr>
+                        <th>Image</th>
                         <th>Nom</th>
                         <th>Email</th>
                         <th>Mobile</th>
@@ -51,6 +52,7 @@
                     @if ($applications->isNotEmpty())
                         @foreach ($applications as $application)
                         <tr>
+                        <td><img src="{{ asset('profile_pic/' . $application->user->image) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 100px;"></td>
                             <td>{{ $application->user->name }}</td>
                             <td>{{ $application->user->email }}</td>
                             <td>{{ $application->user->mobile }}</td>

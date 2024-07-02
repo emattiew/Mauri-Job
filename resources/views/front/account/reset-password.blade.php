@@ -50,7 +50,7 @@
                     </form>                    
                 </div>
                 <div class="mt-4 text-center">
-                    <p>Vous n'avez pas de compte? <a href="{{ route('account.login') }}">Retour à la connexion</a></p>
+                    <p>Vous n'avez pas de compte? <a href="{{ route('login') }}">Retour à la connexion</a></p>
                 </div>
             </div>
         </div>

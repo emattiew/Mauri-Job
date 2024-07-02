@@ -42,7 +42,7 @@ class AccountController extends Controller
 
             session()->flash('success', 'Vous vous êtes inscrit avec succès.');
 
-            return redirect()->route('account.login')->with('success', 'Inscription réussie');
+            return redirect()->route('login')->with('success', 'Inscription réussie');
 
         } else {
             return redirect()->route('account.registration')->withErrors($validator)->withInput();
