@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/account/profile',[AccountController::class,'profile'])->name('account.profile');
     Route::put('/account/updateprofile',[AccountController::class,'updateProfile'])->name('account.updateProfile');
     Route::put('/account/update-cv',[AccountController::class,'updateCV'])->name('account.updateCV');
+    Route::put('/update-diplomas', [AccountController::class, 'updateDiplomas'])->name('account.updateDiplomas');
+  
+
     Route::post('/update-password',[AccountController::class,'updatePassword'])->name('account.updatePassword'); 
     Route::delete('admin/jobs',[JobController::class,'destroy'])->name('admin.jobs.destroy');
     Route::post('/account/update-profile-pic',[AccountController::class,'updateProfilePic'])->name('account.updateProfilePic');
@@ -87,3 +90,4 @@ Route::post('/remove-saved-job',[AccountController::class,'removeSavedJob'])->na
 
 Route::get('/account/logout',[AccountController::class,'logout'])->name('account.logout');
 Route::get('/download/cv/{filename}', [PDFController::class, 'download'])->name('download.cv');
+Route::get('/download/diplomas/{filename}', [PDFController::class, 'downloadd'])->name('download.diplomas');

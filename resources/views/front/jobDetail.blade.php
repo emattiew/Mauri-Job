@@ -106,6 +106,7 @@
                                         <th>Email</th>
                                         <th>Mobile</th>
                                         <th>CV</th>
+                                        <th>Diplome</th>
                                         <th>Date de candidature</th>
                                     </tr>
                                 </thead>
@@ -119,6 +120,13 @@
                                             <td>
                                                 @if($application->user->cv)
                                                     <a href="{{ route('download.cv', $application->user->cv) }}">Télécharger CV</a>
+                                                @else
+                                                    N/A
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($application->user->diplomas)
+                                                    <a href="{{ route('download.diplomas', $application->user->diplomas) }}">Télécharger diplome</a>
                                                 @else
                                                     N/A
                                                 @endif

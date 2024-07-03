@@ -132,6 +132,31 @@ class AccountController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
     }
+    
+    public function updateDiplomas(Request $request){
+        $id = Auth::user()->id;
+        $validator = Validator::make($request->all(), [
+            'diplomas' => 'mimes:pdf,doc,docx|max:2048',
+        ]);
+    
+        if ($validator->passes()){
+            $dp = $request->file('diplomas');
+            $ext = $dp->getClientOriginalExtension();
+            $dpName = $id . '-' . time() . '.' . $ext;
+            $dp->move(public_path('/diplomas/'), $dpName);
+    
+            // Update the user's CV in the database
+            User::where('id', $id)->update(['diploma' => $dbName]);
+    
+            // Flash success message and redirect
+            session()->flash('success', 'dimplome mis à jour avec succès.');
+            return redirect()->route('account.profile');
+        } else {
+            // If validation fails, redirect back with errors
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    }
+    
 
     public function updateProfilePic(Request $request){
         $id=Auth::user()->id;

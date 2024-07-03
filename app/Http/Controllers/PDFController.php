@@ -21,4 +21,17 @@ class PDFController extends Controller
             return abort(404, 'File not found');
         }
     }
+    public function downloadd($filename)
+    {
+        // Sanitize the filename to prevent path traversal attacks
+        $filename = basename($filename);
+
+        $path = public_path('diplomas/' . $filename);
+
+        if (file_exists($path)) {
+            return Response::download($path, $filename);
+        } else {
+            return abort(404, 'File not found');
+        }
+    }
 }

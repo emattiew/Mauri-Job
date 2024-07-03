@@ -73,6 +73,26 @@
                     </div>
                 </form>
             </div>
+            <!-- New Diploma Upload Form -->
+            <div class="card border-0 shadow mb-4">
+                    <form action="{{ route('account.updateDiplomas') }}" method="post" id="updateDiplomasForm" name="updateDiplomasForm" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="card-body p-4">
+                            <h3 class="fs-4 mb-1">Mettre à jour les diplômes</h3>
+                            <div class="mb-4">
+                                <label for="diplomas" class="mb-2">Sélectionner un fichier PDF*</label>
+                                <input type="file" name="diplomas" id="diplomas" class="form-control"  multiple>
+                                @error('diplomas')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="card-footer p-4">
+                            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                        </div>
+                    </form>
+                </div>    
                 <div class="card border-0 shadow mb-4">
                     <form action="" method="post" id="changePasswordForm" name="changePasswordForm">
                     @csrf
