@@ -4,8 +4,10 @@ namespace App\Http\Controllers\expert;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use App\Models\User;
 use App\Models\SavedJob;
 use App\Models\JobApplication;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DashboarddController extends Controller
@@ -50,5 +52,23 @@ class DashboarddController extends Controller
             'count' => $count,
             'applications' => $applications
         ]);
+    }
+    
+    public function storeOpinion(Request $request, $id)
+    {
+        // Validate the request
+        $request->validate([
+            'expert_opinion' => 'required|string|max:255',
+        ]);
+    
+        // Find the job application by ID
+        $application = JobApplication::findOrFail($id);
+    
+        // Update the job application's expert opinion
+        $application->expert_opinion = $request->expert_opinion;
+        $application->save();
+    
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Avis enregistré avec succès.');
     }
 }

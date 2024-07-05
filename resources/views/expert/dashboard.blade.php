@@ -49,6 +49,7 @@
                         <th>CV</th>
                         <th>Diplome</th>
                         <th>Date de candidature</th>
+                        <th>Votre Avis </th>
                     </tr>
                     @if ($applications->isNotEmpty())
                         @foreach ($applications as $application)
@@ -73,6 +74,15 @@
                             </td>
                             <td>
                                 {{ \Carbon\Carbon::parse($application->applied_date)->format('d M, Y') }}
+                            </td>
+                            <td>
+                                <form action="{{ route('expert.opinion', $application->id) }}" method="POST">
+                                    @csrf
+                                    <div class="input-group">
+                                        <input type="text" name="expert_opinion" class="form-control" placeholder="Donner votre avis" value="{{ $application->expert_opinion ?? '' }}">
+                                        <button class="btn btn-primary" type="submit">Soumettre</button>
+                                    </div>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

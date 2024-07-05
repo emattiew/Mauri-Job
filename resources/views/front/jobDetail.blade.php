@@ -84,66 +84,8 @@
                         </div>
                     </div>
                 </div>
-
-                @if (Auth::user() && Auth::user()->id == $job->user_id)
-                    <div class="card shadow border-0 mt-4">
-                        <div class="job_details_header">
-                            <div class="single_jobs white-bg d-flex justify-content-between">
-                                <div class="jobs_left d-flex align-items-center">
-                                    <div class="jobs_conetent">                                    
-                                        <h4>Candidats</h4>                                    
-                                    </div>
-                                </div>
-                                <div class="jobs_right"></div>
-                            </div>
-                        </div>
-                        <div class="descript_wrap white-bg">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Nom</th>
-                                        <th>Email</th>
-                                        <th>Mobile</th>
-                                        <th>CV</th>
-                                        <th>Diplome</th>
-                                        <th>Date de candidature</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($applications as $application)
-                                        <tr>
-                                            <td><img src="{{ asset('profile_pic/' . $application->user->image) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 100px;"></td>
-                                            <td>{{ $application->user->name }}</td>
-                                            <td><a href="mailto:{{ $application->user->email }}">{{ $application->user->email }}</a></td>
-                                            <td>{{ $application->user->mobile }}</td>
-                                            <td>
-                                                @if($application->user->cv)
-                                                    <a href="{{ route('download.cv', $application->user->cv) }}">Télécharger CV</a>
-                                                @else
-                                                    N/A
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if($application->user->diplomas)
-                                                    <a href="{{ route('download.diplomas', $application->user->diplomas) }}">Télécharger diplome</a>
-                                                @else
-                                                    N/A
-                                                @endif
-                                            </td>
-                                            <td>{{ \Carbon\Carbon::parse($application->applied_date)->format('d M, Y') }}</td>
-                                        </tr> 
-                                    @empty
-                                        <tr>
-                                            <td colspan="6">Aucun candidat trouvé</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                @endif 
             </div>
+            
             <div class="col-md-4">
                 <div class="card shadow border-0">
                     <div class="job_sumary">
@@ -184,6 +126,68 @@
             </div>
         </div>
     </div>
+    @if (Auth::user() && Auth::user()->id == $job->user_id)
+    <div class="container mt-5 pt-5">
+        <div class="card shadow border-0">
+            <div class="job_details_header">
+                <div class="single_jobs white-bg d-flex justify-content-between">
+                    <div class="jobs_left d-flex align-items-center">
+                        <div class="jobs_conetent">
+                            <h4 style="margin-left: 15px;">Candidats</h4> <!-- Adjusted margin-left -->
+                        </div>
+                    </div>
+                    <div class="jobs_right"></div>
+                </div>
+            </div>
+            <div class="descript_wrap white-bg" style="margin-left: 15px;"> <!-- Adjusted margin-left -->
+                <table class="table table-striped w-100">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>CV</th>
+                            <th>Diplome</th>
+                            <th>Date de candidature</th>
+                            <th>Avis de l'expert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($applications as $application)
+                            <tr>
+                                <td><img src="{{ asset('profile_pic/' . $application->user->image) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 100px;"></td>
+                                <td>{{ $application->user->name }}</td>
+                                <td><a href="mailto:{{ $application->user->email }}">{{ $application->user->email }}</a></td>
+                                <td>{{ $application->user->mobile }}</td>
+                                <td>
+                                    @if($application->user->cv)
+                                        <a href="{{ route('download.cv', $application->user->cv) }}">Télécharger CV</a>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($application->user->diplomas)
+                                        <a href="{{ route('download.diplomas', $application->user->diplomas) }}">Télécharger diplome</a>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>{{ \Carbon\Carbon::parse($application->applied_date)->format('d M, Y') }}</td>
+                                <td>{{ $application->expert_opinion ?? 'Aucun avis' }}</td> 
+                            </tr> 
+                        @empty
+                            <tr>
+                                <td colspan="8">Aucun candidat trouvé</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+@endif
 </section>
 
 <!-- Bootstrap Modal for Confirmation -->
